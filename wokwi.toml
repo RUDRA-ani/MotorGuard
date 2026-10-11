@@ -1,0 +1,4 @@
+[wokwi]
+version = 1
+firmware = "build/motor_guard.bin"
+elf = "build/motor_guard.elf"

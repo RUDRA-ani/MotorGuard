@@ -1,0 +1,104 @@
+
+{
+  "version": 1,
+  "author": "Rmaster",
+  "editor": "wokwi",
+  "parts": [
+    {
+      "type": "board-esp32-devkit-v1",
+      "id": "esp",
+      "top": 0,
+      "left": -4.76,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-pushbutton",
+      "id": "btn1",
+      "top": 20,
+      "left": 340,
+      "attrs": {
+        "color": "green",
+        "label": "Motor / Fault"
+      }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r1",
+      "top": 150,
+      "left": 330,
+      "attrs": {
+        "value": "220"
+      }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "motorLed",
+      "top": 150,
+      "left": 470,
+      "attrs": {
+        "color": "green",
+        "label": "Motor ON"
+      }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r2",
+      "top": 230,
+      "left": 330,
+      "attrs": {
+        "value": "220"
+      }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "faultLed",
+      "top": 230,
+      "left": 470,
+      "attrs": {
+        "color": "red",
+        "label": "FAULT"
+      }
+    },
+    {
+      "type": "wokwi-potentiometer",
+      "id": "currentPot",
+      "top": 340,
+      "left": 350,
+      "attrs": {
+        "label": "Current"
+      }
+    },
+    {
+      "type": "wokwi-potentiometer",
+      "id": "temperaturePot",
+      "top": 450,
+      "left": 350,
+      "attrs": {
+        "label": "Temperature"
+      }
+    }
+  ],
+ "connections": [
+  [ "esp:D23", "btn1:1.l", "green", [] ],
+  [ "btn1:2.l", "esp:GND.1", "white", [] ],
+  [ "esp:D18", "r1:1", "green", [] ],
+  [ "r1:2", "motorLed:A", "green", [] ],
+  [ "motorLed:C", "esp:GND.1", "white", [] ],
+  [ "esp:D19", "r2:1", "red", [] ],
+  [ "r2:2", "faultLed:A", "red", [] ],
+  [ "faultLed:C", "esp:GND.1", "white", [] ],
+  [ "currentPot:VCC", "esp:3V3", "red", [] ],
+  [ "currentPot:GND", "esp:GND.1", "white", [] ],
+  [ "currentPot:SIG", "esp:D34", "green", [] ],
+  [ "temperaturePot:VCC", "esp:3V3", "red", [] ],
+  [ "temperaturePot:GND", "esp:GND.1", "white", [] ],
+  [ "temperaturePot:SIG", "esp:D35", "green", [] ],
+   [ "esp:TX0", "$serialMonitor:RX", "", [] ], 
+     [ "esp:RX0", "$serialMonitor:TX", "", [] ]
+],
+ "serialMonitor": {
+  "display": "always",
+  "newline": "crlf"
+}   ,
+  "dependencies": {}
+}
